@@ -160,16 +160,15 @@ void get_and_set_local_pixel_from_zynq_recv(void);
 
 
 void back2arm(void);
+void convolution(void);
+void convolution_z(void);
 
-void sobel_optimized(int orig_image, int dest_image);
-void rconv(int orig_image, int dest_image);
-
-int absriscv(int x);
 void core_init(void);
 uint32_t get_pixel(uint32_t x,uint32_t y,uint32_t s,uint32_t f);
 void wait_central(void);
 void wait_perifericos(void);
-void sobel(void);
+
+
 
 volatile uint32_t kernel[KERNEL_SIZE][KERNEL_SIZE] = {
     {1, 1,  1,  1,  1},
@@ -186,23 +185,6 @@ volatile uint32_t kernelz[KERNEL_SIZE_Z][KERNEL_SIZE_Z] = {
     {  1,  1,  1}
 };
 
-int maskX[3][3] = {
-    {-1, 0, 1},
-    {-2, 0, 2},
-    {-1, 0, 1}
-};
-
-int maskY[3][3] = {
-    {1,  2,  1},
-    {0,  0,  0},
-    {-1, -2, -1}
-};
-
-int kernelzmin[3][3] = {
-    {  0,  1,  0},
-    {  1,  0,  1},
-    {  0,  1,  0}
-};
 
 void main()
 {
@@ -227,7 +209,7 @@ void back2arm(void)
         for(volatile uint32_t j = 0; j < 240; j++)
         {
 
-         AXI_RISCV_IMAGE_PIXEL=get_pixel(j,i,2,0);
+         AXI_RISCV_IMAGE_PIXEL=get_pixel(j,i,1,0);
 
          AXI_RISCV_IMAGE_REQ=1;
 
@@ -246,19 +228,26 @@ void back2arm(void)
 
 void core_init(void)
 {
-    if (X_LOCAL == 1 && Y_LOCAL == 1) {
-        distribute_image_from_zynq();
-        rconv(0,1);
-        wait_perifericos();
-        sobel_optimized(1, 2);
-        wait_perifericos();
-    } else {
-        get_first_image_recv();
-        rconv(0,1);
-        wait_central();
-        sobel_optimized(1, 2);
-        wait_central();
-    }
+        if(X_LOCAL==1){
+            if(Y_LOCAL==1){
+                distribute_image_from_zynq();
+                convolution_z();
+                wait_perifericos();
+            }
+            else
+            {
+                get_first_image_recv();
+                convolution_z();
+                wait_central();
+            }
+        }
+        else
+        {
+            get_first_image_recv();
+            convolution_z();
+            wait_central();
+        }
+
 }
 void wait_central(void)
 {
@@ -690,65 +679,69 @@ uint32_t get_pixel(uint32_t x,uint32_t y,uint32_t s,uint32_t f)
         return read_message_pixelValue;
 }
 
-int absriscv(int x){
-    if (x > 0)
-        return x;
-    else
-        return -x ;
-}
-void sobel_optimized(int orig_image, int dest_image) {
-    for (int i = Y_LOCAL * SUB_IMAGE_HEIGHT; i < Y_LOCAL * SUB_IMAGE_HEIGHT + SUB_IMAGE_HEIGHT; i++) {
-        for (int j = X_LOCAL * SUB_IMAGE_WIDTH; j < X_LOCAL * SUB_IMAGE_WIDTH + SUB_IMAGE_WIDTH; j++) {
-            int sumX = 0, sumY = 0;
+void convolution(void) {
 
-            for (int k = -1; k <= 1; k++) {
-                for (int l = -1; l <= 1; l++) {
+
+
+    for (int i = Y_LOCAL*SUB_IMAGE_HEIGHT; i < Y_LOCAL*SUB_IMAGE_HEIGHT+SUB_IMAGE_HEIGHT; i++) {
+        for (int j = X_LOCAL*SUB_IMAGE_WIDTH; j < X_LOCAL*SUB_IMAGE_WIDTH+SUB_IMAGE_WIDTH; j++) {
+            uint32_t sum = 0;
+            uint8_t sum_npixels=0;
+            // Loop over each element in the kernel
+            for (int k = -KERNEL_SIZE/2; k <= KERNEL_SIZE/2; k++) {
+                for (int l = -KERNEL_SIZE/2; l <= KERNEL_SIZE/2; l++) {
+
+                    // Calculate the index of the pixel in the image
                     int x = j + l;
                     int y = i + k;
 
-                    if (x >= 0 && x < IMAGE_WIDTH && y >= 0 && y < IMAGE_HEIGHT) {
-                        int pixelValue = get_pixel(x, y, orig_image, 0);
-                        sumX += maskX[k + 1][l + 1] * pixelValue;
-                        sumY += maskY[k + 1][l + 1] * pixelValue;
+                    // Handle edge cases by setting out of bounds pixels to 0
+                    if (x < 0 || x >= IMAGE_WIDTH || y < 0 || y >= IMAGE_HEIGHT) {
+                        sum += 0;
+                    } else {
+                        sum += kernel[k+KERNEL_SIZE/2][l+KERNEL_SIZE/2] * get_pixel(x,y,0,0);
+                        sum_npixels++;
                     }
                 }
             }
-            int combinedGradient = ((sumX+sumY) > 255) ? 255 : ((sumX+sumY) < -255) ? 255 : absriscv((sumX+sumY)) ;
 
-            // Set the result
-            set_pixel(combinedGradient, j, i, dest_image, 0);
+            // Set the new pixel value in the image
+            set_pixel((uint32_t)sum/sum_npixels,j,i,2,0);
+
         }
     }
+
 }
+void convolution_z(void) {
 
-void rconv(int orig_image, int dest_image) {
-    for (int i = Y_LOCAL * SUB_IMAGE_HEIGHT; i < Y_LOCAL * SUB_IMAGE_HEIGHT + SUB_IMAGE_HEIGHT; i++) {
-        for (int j = X_LOCAL * SUB_IMAGE_WIDTH; j < X_LOCAL * SUB_IMAGE_WIDTH + SUB_IMAGE_WIDTH; j++) {
+
+
+    for (int i = Y_LOCAL*SUB_IMAGE_HEIGHT; i < Y_LOCAL*SUB_IMAGE_HEIGHT+SUB_IMAGE_HEIGHT; i++) {
+        for (int j = X_LOCAL*SUB_IMAGE_WIDTH; j < X_LOCAL*SUB_IMAGE_WIDTH+SUB_IMAGE_WIDTH; j++) {
             uint32_t sum = 0;
-            uint8_t sum_npixels = 0;
+            uint8_t sum_npixels=0;
+            // Loop over each element in the kernel
+            for (int k = -KERNEL_SIZE_Z/2; k <= KERNEL_SIZE_Z/2; k++) {
+                for (int l = -KERNEL_SIZE_Z/2; l <= KERNEL_SIZE_Z/2; l++) {
 
-            // Explicitly loop over the cross pattern in the kernel and exclude the central pixel
-            for (int k = -1; k <= 1; k++) {
-                for (int l = -1; l <= 1; l++) {
-                    // Skip the corners and the central pixel
-                    if ((k == 0 || l == 0) && !(k == 0 && l == 0)) {
-                        int x = j + l;
-                        int y = i + k;
-                        // Check bounds and only add if within the image
-                        if (x >= 0 && x < IMAGE_WIDTH && y >= 0 && y < IMAGE_HEIGHT) {
-                            int pixelValue = get_pixel(x, y, orig_image, 0);
-                            sum += kernelzmin[k + 1][l + 1] * pixelValue;
-                            sum_npixels++;
-                        }
+                    // Calculate the index of the pixel in the image
+                    int x = j + l;
+                    int y = i + k;
+
+                    // Handle edge cases by setting out of bounds pixels to 0
+                    if (x < 0 || x >= IMAGE_WIDTH || y < 0 || y >= IMAGE_HEIGHT) {
+                        sum += 0;
+                    } else {
+                        sum += kernelz[k+KERNEL_SIZE_Z/2][l+KERNEL_SIZE_Z/2] * get_pixel(x,y,0,0);
+                        sum_npixels++;
                     }
                 }
             }
 
-            // Ensure sum_npixels is never zero to avoid division by zero
-            if (sum_npixels > 0) {
-                set_pixel((uint32_t)sum >> 2, j, i, dest_image, 0); // Use bit shift for division by 4 for optimization
-            } else {
-            }
+            // Set the new pixel value in the image
+            set_pixel((uint32_t)sum/sum_npixels,j,i,1,0);
+
         }
     }
+
 }

@@ -1,6 +1,6 @@
-# mpriscv-Sbesc23
+# MPRISCV - Sugar Cane
 
-This repository contais the hardware platform configuration design: FPGA bitstream of a riscv based MPSoC _MPRISCV_ targeting  ZCU104 development board. It also includes a application for sobel
+This repository contais the hardware platform configuration design: FPGA bitstream of a riscv based MPSoC _MPRISCV_ targeting  ZCU104 development board. It also includes a application for calculating angle rotation of sugar cane.
 
 ## Overview 
 
@@ -8,7 +8,7 @@ System flow should be something like:
 
 1. Configure the FPGA
 2. Program the _MPRISCV_ 
-3. Run Sobel
+3. Run Sugar Cane application
 
 
 ## Follow instructions 
@@ -24,7 +24,7 @@ Load the bitstream of _MPRISCV_. Keep in mind that this bitstream upload will la
     ~/reponame/$ sudo fpgautil -b mpriscv_wrapper.bit
 
 
-Next we need to install the necessary python packages for the sobel sobel app. 
+Next we need to install the necessary python packages for the sugar cane app. 
 
 What this app does under the hood is calling a dinamically linked library compile for C/C++ which access `/dev/mem`. This is relevant because you must run python app routine as sudo in order to meet permissions requirements and for some unknown odd reason to me, pip3 packages installed by users are not seen by sudo. 
 
@@ -54,7 +54,7 @@ Compile as shared libraries the program in C/C++ which loads the mpriscv firmwar
     
     $ gcc -fPIC -shared smp.c -o mpriscv.so
 
-Go to `core` folder for runing the sobel sobel application
+Go to `core` folder for runing the sugar cane application
 
     $ cd ~/reponame/core
 

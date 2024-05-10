@@ -2,96 +2,88 @@
 #define IMAGE_ARRAY_H
 #include<stdint.h> 
 
-#include "images/c4_1_01_tiff.hpp"
-#include "images/c4_1_02_tiff.hpp"
-#include "images/c4_1_03_tiff.hpp"
-#include "images/c4_1_04_tiff.hpp"
-#include "images/c4_1_05_tiff.hpp"
-#include "images/c4_1_06_tiff.hpp"
-#include "images/c4_1_07_tiff.hpp"
-#include "images/c4_1_08_tiff.hpp"
-#include "images/c4_2_01_tiff.hpp"
-#include "images/c4_2_03_tiff.hpp"
-#include "images/c4_2_05_tiff.hpp"
-#include "images/c4_2_06_tiff.hpp"
-#include "images/c4_2_07_tiff.hpp"
-#include "images/c5_1_09_tiff.hpp"
-#include "images/c5_1_10_tiff.hpp"
-#include "images/c5_1_11_tiff.hpp"
-#include "images/c5_1_12_tiff.hpp"
-#include "images/c5_1_13_tiff.hpp"
-#include "images/c5_1_14_tiff.hpp"
-#include "images/c5_2_08_tiff.hpp"
-#include "images/c5_2_09_tiff.hpp"
-#include "images/c5_2_10_tiff.hpp"
-#include "images/c5_3_01_tiff.hpp"
-#include "images/c5_3_02_tiff.hpp"
-#include "images/c7_1_01_tiff.hpp"
-#include "images/c7_1_02_tiff.hpp"
-#include "images/c7_1_03_tiff.hpp"
-#include "images/c7_1_04_tiff.hpp"
-#include "images/c7_1_05_tiff.hpp"
-#include "images/c7_1_06_tiff.hpp"
-#include "images/c7_1_07_tiff.hpp"
-#include "images/c7_1_08_tiff.hpp"
-#include "images/c7_1_09_tiff.hpp"
-#include "images/c7_1_10_tiff.hpp"
-#include "images/c7_2_01_tiff.hpp"
-#include "images/cboat_512_tiff.hpp"
-#include "images/cBoat_tiff.hpp"
-#include "images/cCman_tiff.hpp"
-#include "images/cgray21_512_tiff.hpp"
-#include "images/cHouse_tiff.hpp"
-#include "images/cLena_tiff.hpp"
-#include "images/cPepper_tiff.hpp"
-#include "images/cruler_512_tiff.hpp"
-
+#include "images/conf_002.hpp"
+#include "images/conf_004.hpp"
+#include "images/conf_008.hpp"
+#include "images/conf_009.hpp"
+#include "images/conf_010.hpp"
+#include "images/conf_012.hpp"
+#include "images/conf_013.hpp"
+#include "images/conf_014.hpp"
+#include "images/conf_017.hpp"
+#include "images/conf_020.hpp"
+#include "images/conf_029.hpp"
+#include "images/conf_030.hpp"
+#include "images/conf_032.hpp"
+#include "images/conf_037.hpp"
+#include "images/conf_038.hpp"
+#include "images/conf_041.hpp"
+#include "images/conf_053.hpp"
+#include "images/conf_054.hpp"
+#include "images/conf_060.hpp"
+#include "images/conf_061.hpp"
+#include "images/conf_062.hpp"
+#include "images/conf_063.hpp"
+#include "images/conf_064.hpp"
+#include "images/conf_065.hpp"
+#include "images/conf_066.hpp"
+#include "images/conf_067.hpp"
+#include "images/conf_068.hpp"
+#include "images/conf_069.hpp"
+#include "images/conf_070.hpp"
+#include "images/conf_071.hpp"
+#include "images/conf_072.hpp"
+#include "images/conf_073.hpp"
+#include "images/conf_074.hpp"
+#include "images/conf_075.hpp"
+#include "images/conf_081.hpp"
+#include "images/conf_082.hpp"
+#include "images/conf_083.hpp"
+#include "images/conf_084.hpp"
+#include "images/conf_085.hpp"
+#include "images/conf_086.hpp"
 
 uint8_t *conf[] = {
-c4_1_01_tiff,
-c4_1_02_tiff,
-c4_1_03_tiff,
-c4_1_04_tiff,
-c4_1_05_tiff,
-c4_1_06_tiff,
-c4_1_07_tiff,
-c4_1_08_tiff,
-c4_2_01_tiff,
-c4_2_03_tiff,
-c4_2_05_tiff,
-c4_2_06_tiff,
-c4_2_07_tiff,
-c5_1_09_tiff,
-c5_1_10_tiff,
-c5_1_11_tiff,
-c5_1_12_tiff,
-c5_1_13_tiff,
-c5_1_14_tiff,
-c5_2_08_tiff,
-c5_2_09_tiff,
-c5_2_10_tiff,
-c5_3_01_tiff,
-c5_3_02_tiff,
-c7_1_01_tiff,
-c7_1_02_tiff,
-c7_1_03_tiff,
-c7_1_04_tiff,
-c7_1_05_tiff,
-c7_1_06_tiff,
-c7_1_07_tiff,
-c7_1_08_tiff,
-c7_1_09_tiff,
-c7_1_10_tiff,
-c7_2_01_tiff,
-cboat_512_tiff,
-cBoat_tiff,
-cCman_tiff,
-cgray21_512_tiff,
-cHouse_tiff,
-cLena_tiff,
-cPepper_tiff,
-cruler_512_tiff,
-    
+      CONF_002,
+      CONF_004,
+      CONF_008,
+      CONF_009,
+      CONF_010,
+      CONF_012,
+      CONF_013,
+      CONF_014,
+      CONF_017,
+      CONF_020,
+      CONF_029,
+      CONF_030,
+      CONF_032,
+      CONF_037,
+      CONF_038,
+      CONF_041,
+      CONF_053,
+      CONF_054,
+      CONF_060,
+      CONF_061,
+      CONF_062,
+      CONF_063,
+      CONF_064,
+      CONF_065,
+      CONF_066,
+      CONF_067,
+      CONF_068,
+      CONF_069,
+      CONF_070,
+      CONF_071,
+      CONF_072,
+      CONF_073,
+      CONF_074,
+      CONF_075,
+      CONF_081,
+      CONF_082,
+      CONF_083,
+      CONF_084,
+      CONF_085,
+      CONF_086,
 };
 
 #endif
