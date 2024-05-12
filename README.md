@@ -1,4 +1,6 @@
-# Intro
+# Documentação dos trabalho com MPRISC-V
+
+# Introduction of heterogeneous multicore for image processing
 
 Dedicated to make public our IP/CV processor, RISC-V based MPSoC *MPRISCV* targeting ZCU104 Zynq development board, this repository ‣ contains the hardware platform configuration design: source-codes in VHDL, tcl scripts, makefiles, C/C++ sources of *tile-code and arm-code* to synthesise, implement the MPRISCV in programmable logic, program the *tiles,* and program the ARM-Host to act as the orchestrator of a heterogeneous multiprocessor dedicated to bring efficiency in IP/CV processing.
 
@@ -34,113 +36,93 @@ The Router establish the communication between *tiles* with default message prot
 
 The main application capable of better exploiting MPRISCV is the sobel edge contour. It requires many *steps* and clear IP/CV algorithms that are mean blurring kernels of 3x3 and 5x5, the $\text{sobel}_x$ and  $\text{sobel}_y$, absolute value (*abs*) and sum of images, and threshold. Behold images processed by the MPRISC-V
 
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-    .row {
-        display: flex;
-    }
-    .column {
-        flex: 33.33%;
-        padding: 5px;
-    }
-    img {
-        width: 100%;
-        height: auto;
-    }
-</style>
-</head>
-<body>
+<div style="text-align: center;">
 
-<!-- Each row contains one image from each category -->
-<div class="row">
-    <div class="column">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 2.png" alt="Original 1">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 3.png" alt="Original 2">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 4.png" alt="Original 3">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 5.png" alt="Original 4">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 6.png" alt="Original 5">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 7.png" alt="Original 6">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 8.png" alt="Original 7">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 9.png" alt="Original 8">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 10.png" alt="Original 9">
-    </div>
-    <div class="column">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled.jpeg" alt="Mean 3x3 - 1">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 1.jpeg" alt="Mean 3x3 - 2">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 2.jpeg" alt="Mean 3x3 - 3">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 3.jpeg" alt="Mean 3x3 - 4">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 4.jpeg" alt="Mean 3x3 - 5">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 5.jpeg" alt="Mean 3x3 - 6">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 6.jpeg" alt="Mean 3x3 - 7">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 7.jpeg" alt="Mean 3x3 - 8">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 8.jpeg" alt="Mean 3x3 - 9">
-    </div>
-    <div class="column">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 9.jpeg" alt="Mean 5x5 - 1">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 10.jpeg" alt="Mean 5x5 - 2">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 11.jpeg" alt="Mean 5x5 - 3">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 12.jpeg" alt="Mean 5x5 - 4">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 13.jpeg" alt="Mean 5x5 - 5">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 14.jpeg" alt="Mean 5x5 - 6">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 15.jpeg" alt="Mean 5x5 - 7">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 16.jpeg" alt="Mean 5x5 - 8">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 17.jpeg" alt="Mean 5x5 - 9">
-    </div>
+<div style="text-align: center;">
+
+<p>
+<img src="images/Untitled 2.png" alt="Original 1" style="width: 30%; margin: 5px;">
+<img src="images/Untitled.jpeg" alt="Mean 3x3 - 1" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 9.jpeg" alt="Mean 5x5 - 1" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 3.png" alt="Original 2" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 1.jpeg" alt="Mean 3x3 - 2" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 10.jpeg" alt="Mean 5x5 - 2" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 4.png" alt="Original 3" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 2.jpeg" alt="Mean 3x3 - 3" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 11.jpeg" alt="Mean 5x5 - 3" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 5.png" alt="Original 4" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 3.jpeg" alt="Mean 3x3 - 4" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 12.jpeg" alt="Mean 5x5 - 4" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 6.png" alt="Original 5" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 4.jpeg" alt="Mean 3x3 - 5" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 13.jpeg" alt="Mean 5x5 - 5" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 7.png" alt="Original 6" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 5.jpeg" alt="Mean 3x3 - 6" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 14.jpeg" alt="Mean 5x5 - 6" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 8.png" alt="Original 7" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 6.jpeg" alt="Mean 3x3 - 7" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 15.jpeg" alt="Mean 5x5 - 7" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 9.png" alt="Original 8" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 7.jpeg" alt="Mean 3x3 - 8" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 16.jpeg" alt="Mean 5x5 - 8" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 10.png" alt="Original 9" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 8.jpeg" alt="Mean 3x3 - 9" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 17.jpeg" alt="Mean 5x5 - 9" style="width: 30%; margin: 5px;">
+</p>
+
 </div>
 
-</body>
-</html>
+
 
 **Sobel contour detection**
 
 All of the filters mentioned earlier compose this application requiring control over execution flow$^1$, thus, it must ensure to follow [flowchart](#Overview).
 
 Here's an HTML snippet to place the nine images you specified into three columns, side by side. Each column will contain three images:
+<div style="text-align: center;">
 
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-    .row {
-        display: flex;
-    }
-    .column {
-        flex: 33.33%;
-        padding: 5px;
-    }
-    img {
-        width: 100%;
-        height: auto;
-    }
-</style>
-</head>
-<body>
+<img src="images/Untitled 11.png" alt="Image 1" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 12.png" alt="Image 2" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 13.png" alt="Image 3" style="width: 30%; margin: 5px;">
 
-<h2>Three Column Image Layout</h2>
+<br>
 
-<!-- Row with three columns -->
-<div class="row">
-    <div class="column">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 11.png" alt="Image 1">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 12.png" alt="Image 2">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 13.png" alt="Image 3">
-    </div>
-    <div class="column">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 14.png" alt="Image 4">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 15.png" alt="Image 5">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 16.png" alt="Image 6">
-    </div>
-    <div class="column">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 17.png" alt="Image 7">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 18.png" alt="Image 8">
-        <img src="Documentação dos trabalho com MPRISC-V 219c48b188d84af6a7d6e28627913bce/Untitled 19.png" alt="Image 9">
-    </div>
+<img src="images/Untitled 14.png" alt="Image 4" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 15.png" alt="Image 5" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 16.png" alt="Image 6" style="width: 30%; margin: 5px;">
+
+<br>
+
+<img src="images/Untitled 17.png" alt="Image 7" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 18.png" alt="Image 8" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 19.png" alt="Image 9" style="width: 30%; margin: 5px;">
+
 </div>
 
-</body>
-</html>
 
  $^1$ todo this explanation about control the execution synchrony.
 
@@ -150,74 +132,74 @@ This algorithm is designed to help guide harvesters to maintain an appropriate t
 
 In this context, MPRISCV serves as a pre-processor to smooth the image, reducing noise errors. More continuous images are likely to require less time for heuristic processing. The ARM-Host, running the Ubuntu OS, handles the Savitzky-Golay filtering part. We provide several images with the detected slope angle.
 
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-    .row {
-        display: flex;
-    }
-    .column {
-        flex: 33.33%;
-        padding: 5px;
-    }
-    img {
-        width: 100%;
-        height: auto;
-    }
-</style>
-</head>
-<body>
+<div style="text-align: center;">
 
-<h2>Image Column Layout</h2>
+<p>
+<img src="images/Untitled 20.png" alt="Image 20" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 31.png" alt="Image 31" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 41.png" alt="Image 42" style="width: 30%; margin: 5px;">
+</p>
 
-<div class="row">
-    <div class="column">
-        <!-- First Column -->
-        <img src="images/Untitled 20.png" alt="Image 20">
-        <img src="images/Untitled 21.png" alt="Image 21">
-        <img src="images/Untitled 22.png" alt="Image 22">
-        <img src="images/Untitled 23.png" alt="Image 23">
-        <img src="images/Untitled 24.png" alt="Image 24">
-        <img src="images/Untitled 25.png" alt="Image 25">
-        <img src="images/Untitled 26.png" alt="Image 26">
-        <img src="images/Untitled 27.png" alt="Image 27">
-        <img src="images/Untitled 28.png" alt="Image 28">
-        <img src="images/Untitled 29.png" alt="Image 29">
-        <img src="images/Untitled 30.png" alt="Image 30">
-    </div>
-    <div class="column">
-        <!-- Second Column -->
-        <img src="images/Untitled 31.png" alt="Image 31">
-        <img src="images/Untitled 32.png" alt="Image 32">
-        <img src="images/Untitled 33.png" alt="Image 33">
-        <img src="images/Untitled 34.png" alt="Image 34">
-        <img src="images/Untitled 35.png" alt="Image 35">
-        <img src="images/Untitled 36.png" alt="Image 36">
-        <img src="images/Untitled 37.png" alt="Image 37">
-        <img src="images/Untitled 38.png" alt="Image 38">
-        <img src="images/Untitled 39.png" alt="Image 39">
-        <img src="images/Untitled 40.png" alt="Image 40">
-        <img src="images/Untitled_(1).png" alt="Image 41">
-    </div>
-    <div class="column">
-        <!-- Third Column -->
-        <img src="images/Untitled 41.png" alt="Image 42">
-        <img src="images/Untitled 42.png" alt="Image 43">
-        <img src="images/Untitled 43.png" alt="Image 44">
-        <img src="images/Untitled 44.png" alt="Image 45">
-        <img src="images/Untitled 45.png" alt="Image 46">
-        <img src="images/Untitled 46.png" alt="Image 47">
-        <img src="images/Untitled 47.png" alt="Image 48">
-        <img src="images/Untitled 48.png" alt="Image 49">
-        <img src="images/Untitled 49.png" alt="Image 50">
-        <img src="images/conf_054_33.png" alt="Image 51">
-        <img src="images/Untitled_(2).png" alt="Image 52">
-    </div>
-</div>
+<p>
+<img src="images/Untitled 21.png" alt="Image 21" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 32.png" alt="Image 32" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 42.png" alt="Image 43" style="width: 30%; margin: 5px;">
+</p>
 
-</body>
-</html>
+<p>
+<img src="images/Untitled 22.png" alt="Image 22" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 33.png" alt="Image 33" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 43.png" alt="Image 44" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 23.png" alt="Image 23" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 34.png" alt="Image 34" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 44.png" alt="Image 45" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 24.png" alt="Image 24" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 35.png" alt="Image 35" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 45.png" alt="Image 46" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 25.png" alt="Image 25" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 36.png" alt="Image 36" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 46.png" alt="Image 47" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 26.png" alt="Image 26" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 37.png" alt="Image 37" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 47.png" alt="Image 48" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 27.png" alt="Image 27" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 38.png" alt="Image 38" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 48.png" alt="Image 49" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 28.png" alt="Image 28" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 39.png" alt="Image 39" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 49.png" alt="Image 50" style="width: 30%; margin: 5px;">
+</p>
+
+<p>
+<img src="images/Untitled 29.png" alt="Image 29" style="width: 30%; margin: 5px;">
+<img src="images/Untitled 40.png" alt="Image 40" style="width: 30%; margin: 5px;">
+<img src="images/conf_054_33.png" alt="Image 51" style="width: 30%; margin: 5px;">
+
+<p>
+<img src="images/Untitled 30.png" alt="Image 30" style="width: 30%; margin: 5px;">
+<img src="images/Untitled_(1).png" alt="Image 41" style="width: 30%; margin: 5px;">
+<img src="images/Untitled_(2).png" alt="Image 52" style="width: 30%; margin: 5px;">
+</p>
+
+
 
 ---
 
@@ -1606,4 +1588,4 @@ Run the application as sudo because it involves writing in the `/dev/mem`
 
 Checkout in each main python [`core/main.py`](https://github.com/arthurmlima/mprvs/blob/main/fw/core/main_general.py) file which directory is writing the resulted images and tables.
 
----# mprvs
+---
