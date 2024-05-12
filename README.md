@@ -258,8 +258,16 @@ Each of these tables are from code for only the filter in question. Example: <co
 ### MPRISCV 3x3 sobel contour detection application
 
 For this test of *sobel contour detection* 9 images shown previously was used in our data-set.
-
-<p><strong><em>Abs</em></strong></p>
+<table style="float: left; margin-right: 20px;">
+<thead>
+<tr>
+<th><strong><em>Abs</em></strong></th>
+<th><strong>Sobel</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
 <table>
 <thead>
 <tr>
@@ -326,17 +334,8 @@ For this test of *sobel contour detection* 9 images shown previously was used in
 </tr>
 </tbody>
 </table>
-
-
-
-
-
-
-
-
-
-
-<p><strong>Sobel</strong></p>
+</td>
+<td>
 <table>
 <thead>
 <tr>
@@ -403,13 +402,22 @@ For this test of *sobel contour detection* 9 images shown previously was used in
 </tr>
 </tbody>
 </table>
+</td>
+</tr>
+</tbody>
+</table>
 
 
-
-
-
-
-<p><strong>Mean3x3</strong></p>
+<table style="float: left; margin-right: 20px;">
+<thead>
+<tr>
+<th><strong>Mean3x3</strong></th>
+<th><strong>Mean5x5</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
 <table>
 <thead>
 <tr>
@@ -476,16 +484,8 @@ For this test of *sobel contour detection* 9 images shown previously was used in
 </tr>
 </tbody>
 </table>
-
-
-
-
-
-
-
-
-
-<p><strong>Mean5x5</strong></p>
+</td>
+<td>
 <table>
 <thead>
 <tr>
@@ -552,240 +552,249 @@ For this test of *sobel contour detection* 9 images shown previously was used in
 </tr>
 </tbody>
 </table>
+</td>
+</tr>
+</tbody>
+</table>
 
 
-
-
-
-
-
-
-<p><strong>General</strong></p>
-<table>
+<table style="float: left; margin-right: 20px;">
 <thead>
 <tr>
-<th>t1</th>
-<th>t2</th>
-<th>t3</th>
-<th>t4</th>
-<th>t1</th>
-<th>t2</th>
-<th>t3</th>
-<th>t4</th>
+<th><strong>General</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>1020676</td>
-<td>6030714</td>
-<td>7465251</td>
-<td>1</td>
-<td>1021116</td>
-<td>6030532</td>
-<td>7464997</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1020904</td>
-<td>6030918</td>
-<td>7465373</td>
-<td>1</td>
-<td>1021454</td>
-<td>6031359</td>
-<td>7466026</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1020834</td>
-<td>6030691</td>
-<td>7465048</td>
-<td>1</td>
-<td>1020966</td>
-<td>6030779</td>
-<td>7465351</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1020858</td>
-<td>6030693</td>
-<td>7465257</td>
-<td>1</td>
-<td>1021153</td>
-<td>6030949</td>
-<td>7465675</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021040</td>
-<td>6030097</td>
-<td>7464927</td>
-<td>1</td>
-<td>1021076</td>
-<td>6031013</td>
-<td>7465620</td>
-</tr>
-<tr>
-<td>2</td>
-<td>1021028</td>
-<td>6030855</td>
-<td>7465505</td>
-<td>1</td>
-<td>1021276</td>
-<td>6031232</td>
-<td>7465771</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021084</td>
-<td>6030816</td>
-<td>7465547</td>
-<td>1</td>
-<td>1021314</td>
-<td>6031257</td>
-<td>7465780</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021062</td>
-<td>6030774</td>
-<td>7465328</td>
-<td>1</td>
-<td>1021376</td>
-<td>6031335</td>
-<td>7466004</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021103</td>
-<td>6031033</td>
-<td>7465816</td>
-<td>1</td>
-<td>1021194</td>
-<td>6031108</td>
-<td>7465589</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021243</td>
-<td>6030812</td>
-<td>7465490</td>
-<td>1</td>
-<td>1021492</td>
-<td>6031349</td>
-<td>7465889</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1021272</td>
-<td>6031047</td>
-<td>7465639</td>
-<td>1</td>
-<td>1021070</td>
-<td>6030916</td>
-<td>7465560</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021157</td>
-<td>6030670</td>
-<td>7465228</td>
-<td>1</td>
-<td>1021405</td>
-<td>6031280</td>
-<td>7466077</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021540</td>
-<td>6031451</td>
-<td>7466090</td>
-<td>1</td>
-<td>1021179</td>
-<td>6031150</td>
-<td>7465691</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021258</td>
-<td>6030782</td>
-<td>7465513</td>
-<td>1</td>
-<td>1021461</td>
-<td>6031038</td>
-<td>7465632</td>
-</tr>
-<tr>
-<td>2</td>
-<td>1021364</td>
-<td>6031257</td>
-<td>7465881</td>
-<td>1</td>
-<td>1021225</td>
-<td>6030841</td>
-<td>7465384</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021004</td>
-<td>6030834</td>
-<td>7465510</td>
-<td>0</td>
-<td>1020785</td>
-<td>6029964</td>
-<td>7464439</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021223</td>
-<td>6029651</td>
-<td>7464796</td>
-<td>1</td>
-<td>1020624</td>
-<td>6030867</td>
-<td>7465326</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021189</td>
-<td>6030984</td>
-<td>7465618</td>
-<td>1</td>
-<td>1020762</td>
-<td>6030591</td>
-<td>7465120</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021415</td>
-<td>6031305</td>
-<td>7465806</td>
-<td>1</td>
-<td>1020798</td>
-<td>6030436</td>
-<td>7464933</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021274</td>
-<td>6030911</td>
-<td>7465394</td>
-<td>1</td>
-<td>1020783</td>
-<td>6030336</td>
-<td>7464783</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1021179</td>
-<td>6030745</td>
-<td>7465374</td>
-<td>1</td>
-<td>1020714</td>
-<td>6029673</td>
-<td>7464156</td>
-</tr>
-</tbody>
+<td>
+<table>
+<thead>
+          <tr>
+            <th>t1</th>
+            <th>t2</th>
+            <th>t3</th>
+            <th>t4</th>
+            <th>t1</th>
+            <th>t2</th>
+            <th>t3</th>
+            <th>t4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>1020676</td>
+            <td>6030714</td>
+            <td>7465251</td>
+            <td>1</td>
+            <td>1021116</td>
+            <td>6030532</td>
+            <td>7464997</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1020904</td>
+            <td>6030918</td>
+            <td>7465373</td>
+            <td>1</td>
+            <td>1021454</td>
+            <td>6031359</td>
+            <td>7466026</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1020834</td>
+            <td>6030691</td>
+            <td>7465048</td>
+            <td>1</td>
+            <td>1020966</td>
+            <td>6030779</td>
+            <td>7465351</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1020858</td>
+            <td>6030693</td>
+            <td>7465257</td>
+            <td>1</td>
+            <td>1021153</td>
+            <td>6030949</td>
+            <td>7465675</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021040</td>
+            <td>6030097</td>
+            <td>7464927</td>
+            <td>1</td>
+            <td>1021076</td>
+            <td>6031013</td>
+            <td>7465620</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>1021028</td>
+            <td>6030855</td>
+            <td>7465505</td>
+            <td>1</td>
+            <td>1021276</td>
+            <td>6031232</td>
+            <td>7465771</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021084</td>
+            <td>6030816</td>
+            <td>7465547</td>
+            <td>1</td>
+            <td>1021314</td>
+            <td>6031257</td>
+            <td>7465780</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021062</td>
+            <td>6030774</td>
+            <td>7465328</td>
+            <td>1</td>
+            <td>1021376</td>
+            <td>6031335</td>
+            <td>7466004</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021103</td>
+            <td>6031033</td>
+            <td>7465816</td>
+            <td>1</td>
+            <td>1021194</td>
+            <td>6031108</td>
+            <td>7465589</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021243</td>
+            <td>6030812</td>
+            <td>7465490</td>
+            <td>1</td>
+            <td>1021492</td>
+            <td>6031349</td>
+            <td>7465889</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>1021272</td>
+            <td>6031047</td>
+            <td>7465639</td>
+            <td>1</td>
+            <td>1021070</td>
+            <td>6030916</td>
+            <td>7465560</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021157</td>
+            <td>6030670</td>
+            <td>7465228</td>
+            <td>1</td>
+            <td>1021405</td>
+            <td>6031280</td>
+            <td>7466077</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021540</td>
+            <td>6031451</td>
+            <td>7466090</td>
+            <td>1</td>
+            <td>1021179</td>
+            <td>6031150</td>
+            <td>7465691</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021258</td>
+            <td>6030782</td>
+            <td>7465513</td>
+            <td>1</td>
+            <td>1021461</td>
+            <td>6031038</td>
+            <td>7465632</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>1021364</td>
+            <td>6031257</td>
+            <td>7465881</td>
+            <td>1</td>
+            <td>1021225</td>
+            <td>6030841</td>
+            <td>7465384</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021004</td>
+            <td>6030834</td>
+            <td>7465510</td>
+            <td>0</td>
+            <td>1020785</td>
+            <td>6029964</td>
+            <td>7464439</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021223</td>
+            <td>6029651</td>
+            <td>7464796</td>
+            <td>1</td>
+            <td>1020624</td>
+            <td>6030867</td>
+            <td>7465326</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021189</td>
+            <td>6030984</td>
+            <td>7465618</td>
+            <td>1</td>
+            <td>1020762</td>
+            <td>6030591</td>
+            <td>7465120</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021415</td>
+            <td>6031305</td>
+            <td>7465806</td>
+            <td>1</td>
+            <td>1020798</td>
+            <td>6030436</td>
+            <td>7464933</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021274</td>
+            <td>6030911</td>
+            <td>7465394</td>
+            <td>1</td>
+            <td>1020783</td>
+            <td>6030336</td>
+            <td>7464783</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1021179</td>
+            <td>6030745</td>
+            <td>7465374</td>
+            <td>1</td>
+            <td>1020714</td>
+            <td>6029673</td>
+            <td>7464156</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
 </table>
 
 ### MPRISCV 3x3 sugar cane angle detection
@@ -794,131 +803,141 @@ The sugar cane application used the MPRISCV 3x3 for executing a prefilter *Mean3
 
 <div style="overflow-x: auto;">
 <table>
-<thead>
-<tr>
-<th>Image Name</th>
-<th>Time app (s)</th>
-<th>conf_064</th>
-<th>5.243612</th>
-<th>conf_070</th>
-<th>5.243778</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>conf_068</td>
-<td>5.339175</td>
-<td>conf_017</td>
-<td>5.251249</td>
-<td>conf_067</td>
-<td>5.239322</td>
-</tr>
-<tr>
-<td>conf_032</td>
-<td>5.254128</td>
-<td>conf_082</td>
-<td>5.255721</td>
-<td>conf_009</td>
-<td>5.242947</td>
-</tr>
-<tr>
-<td>conf_073</td>
-<td>5.250967</td>
-<td>conf_054</td>
-<td>5.338553</td>
-<td>conf_060</td>
-<td>5.239856</td>
-</tr>
-<tr>
-<td>conf_053</td>
-<td>5.253683</td>
-<td>conf_030</td>
-<td>5.338773</td>
-<td>conf_071</td>
-<td>5.242561</td>
-</tr>
-<tr>
-<td>conf_066</td>
-<td>5.268437</td>
-<td>conf_065</td>
-<td>5.337452</td>
-<td>conf_008</td>
-<td>5.241775</td>
-</tr>
-<tr>
-<td>conf_062</td>
-<td>5.247549</td>
-<td>conf_084</td>
-<td>5.338035</td>
-<td>conf_063</td>
-<td>5.242816</td>
-</tr>
-<tr>
-<td>conf_010</td>
-<td>5.254804</td>
-<td>conf_083</td>
-<td>5.335859</td>
-<td>conf_069</td>
-<td>5.236675</td>
-</tr>
-<tr>
-<td>conf_012</td>
-<td>5.332918</td>
-<td>conf_002</td>
-<td>5.335906</td>
-<td>conf_041</td>
-<td>5.24129</td>
-</tr>
-<tr>
-<td>conf_038</td>
-<td>5.337572</td>
-<td>conf_075</td>
-<td>5.335104</td>
-<td>conf_029</td>
-<td>5.238409</td>
-</tr>
-<tr>
-<td>conf_037</td>
-<td>5.33381</td>
-<td>conf_074</td>
-<td>5.337716</td>
-<td>conf_081</td>
-<td>5.242546</td>
-</tr>
-<tr>
-<td>conf_020</td>
-<td>5.334048</td>
-<td>conf_013</td>
-<td>5.245452</td>
-<td>conf_014</td>
-<td>5.23876</td>
-</tr>
-<tr>
-<td>conf_004</td>
-<td>5.337022</td>
-<td>conf_072</td>
-<td>5.241553</td>
-<td>conf_085</td>
-<td>5.245194</td>
-</tr>
-<tr>
-<td>conf_061</td>
-<td>5.24282</td>
-<td>conf_086</td>
-<td>5.23776</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <tr>
+    <td>
+      <table>
+        <thead>
+          <tr>
+            <th>Image Name</th>
+            <th>Time app (s)</th>
+            <th>Image Name</th>
+            <th>Time app (s)</th>
+            <th>Image Name</th>
+            <th>Time app (s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>conf_068</td>
+            <td>5.339175</td>
+            <td>conf_017</td>
+            <td>5.251249</td>
+            <td>conf_067</td>
+            <td>5.239322</td>
+          </tr>
+          <tr>
+            <td>conf_032</td>
+            <td>5.254128</td>
+            <td>conf_082</td>
+            <td>5.255721</td>
+            <td>conf_009</td>
+            <td>5.242947</td>
+          </tr>
+          <tr>
+            <td>conf_073</td>
+            <td>5.250967</td>
+            <td>conf_054</td>
+            <td>5.338553</td>
+            <td>conf_060</td>
+            <td>5.239856</td>
+          </tr>
+          <tr>
+            <td>conf_053</td>
+            <td>5.253683</td>
+            <td>conf_030</td>
+            <td>5.338773</td>
+            <td>conf_071</td>
+            <td>5.242561</td>
+          </tr>
+          <tr>
+            <td>conf_066</td>
+            <td>5.268437</td>
+            <td>conf_065</td>
+            <td>5.337452</td>
+            <td>conf_008</td>
+            <td>5.241775</td>
+          </tr>
+          <tr>
+            <td>conf_062</td>
+            <td>5.247549</td>
+            <td>conf_084</td>
+            <td>5.338035</td>
+            <td>conf_063</td>
+            <td>5.242816</td>
+          </tr>
+          <tr>
+            <td>conf_010</td>
+            <td>5.254804</td>
+            <td>conf_083</td>
+            <td>5.335859</td>
+            <td>conf_069</td>
+            <td>5.236675</td>
+          </tr>
+          <tr>
+            <td>conf_012</td>
+            <td>5.332918</td>
+            <td>conf_002</td>
+            <td>5.335906</td>
+            <td>conf_041</td>
+            <td>5.24129</td>
+          </tr>
+          <tr>
+            <td>conf_038</td>
+            <td>5.337572</td>
+            <td>conf_075</td>
+            <td>5.335104</td>
+            <td>conf_029</td>
+            <td>5.238409</td>
+          </tr>
+          <tr>
+            <td>conf_037</td>
+            <td>5.33381</td>
+            <td>conf_074</td>
+            <td>5.337716</td>
+            <td>conf_081</td>
+            <td>5.242546</td>
+          </tr>
+          <tr>
+            <td>conf_020</td>
+            <td>5.334048</td>
+            <td>conf_013</td>
+            <td>5.245452</td>
+            <td>conf_014</td>
+            <td>5.23876</td>
+          </tr>
+          <tr>
+            <td>conf_004</td>
+            <td>5.337022</td>
+            <td>conf_072</td>
+            <td>5.241553</td>
+            <td>conf_085</td>
+            <td>5.245194</td>
+          </tr>
+          <tr>
+            <td>conf_061</td>
+            <td>5.24282</td>
+            <td>conf_086</td>
+            <td>5.23776</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
 </table>
 </div>
+
 
 ## Power estimation
 
 Regardless of the option for installing in your board. Check out [Getting started](https://www.notion.so/Getting-started-426f838ff0394a55ba38feb84a768372?pvs=21) future section, the repository brings power report `[hw/reports](https://github.com/arthurmlima/mprvs/tree/main/hw/reports)` directory which considers *1x1, 2x2, 3x3, 4x4, 5x5, 6x6* MPRISCV
 
 ### MPRISCV 3x3
-
+<div style="overflow-x: auto;">
+<table>
+  <tr>
+    <td>
 <div style="overflow-x: auto;">
 <table>
 <thead>
@@ -1094,11 +1113,18 @@ Regardless of the option for installing in your board. Check out [Getting starte
 <td></td>
 <td></td>
 </tr>
-</tbody>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
 </table>
-</div">
+</div>
 
 <div style="overflow-x: auto;">
+<table>
+  <tr>
+    <td>
 <table>
 <thead>
 <tr>
@@ -1167,7 +1193,10 @@ Regardless of the option for installing in your board. Check out [Getting starte
 <td>xbar</td>
 <td>0.002</td>
 </tr>
-</tbody>
+        </tbody>
+      </table>
+    </td>
+  </tr>
 </table>
 </div>
 
@@ -1179,6 +1208,9 @@ The same directory <code><a href="https://github.com/arthurmlima/mprvs/tree/main
 
 <p><strong>CLB Logic</strong></p>
 <div style="overflow-x: auto;">
+<table>
+  <tr>
+    <td>
 <table>
         <tr>
             <th>Site Type</th>
@@ -1285,7 +1317,10 @@ The same directory <code><a href="https://github.com/arthurmlima/mprvs/tree/main
             <td>28800</td>
             <td>0.00</td>
         </tr>
-    </tbody>
+        </tbody>
+      </table>
+    </td>
+  </tr>
 </table>
 </div>
 
@@ -1300,7 +1335,11 @@ The same directory <code><a href="https://github.com/arthurmlima/mprvs/tree/main
 
 
 <p><strong>CLB Logic Distribution</strong></p>
+<p><strong>CLB Logic</strong></p>
 <div style="overflow-x: auto;">
+<table>
+  <tr>
+    <td>
     <table>
             <tr>
                 <th>Site Type</th>
@@ -1488,9 +1527,11 @@ The same directory <code><a href="https://github.com/arthurmlima/mprvs/tree/main
                 <td>3.87</td>
             </tr>
         </tbody>
-    </table>
+      </table>
+    </td>
+  </tr>
+</table>
 </div>
-
 
 
 *Note: Available Control Sets calculated as Slices * 2.*
