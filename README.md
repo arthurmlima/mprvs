@@ -1,6 +1,4 @@
-# Documentação dos trabalho com MPRISC-V
-
-# Introduction of heterogeneous multicore for image processing
+# Our heterogeneous multicore for image processing
 
 Dedicated to make public our IP/CV processor, RISC-V based MPSoC *MPRISCV* targeting ZCU104 Zynq development board, this repository ‣ contains the hardware platform configuration design: source-codes in VHDL, tcl scripts, makefiles, C/C++ sources of *tile-code and arm-code* to synthesise, implement the MPRISCV in programmable logic, program the *tiles,* and program the ARM-Host to act as the orchestrator of a heterogeneous multiprocessor dedicated to bring efficiency in IP/CV processing.
 
